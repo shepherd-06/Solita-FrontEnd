@@ -39,7 +39,7 @@ class JourneyView extends React.Component {
     }
 
     render() {
-        console.log(this.state.journey);
+        console.log(this.state.page);
         return (
             <div>
                 {this.state.journey.length === 0 &&
@@ -55,29 +55,85 @@ class JourneyView extends React.Component {
                 }
 
                 {this.state.journey.length !== 0 &&
-                    <table className="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">Departure Time</th>
-                                <th scope="col">Departure Station</th>
-                                <th scope="col">Return Time</th>
-                                <th scope="col">Return Station</th>
-                                <th scope="col">Distance (KM)</th>
-                                <th scope="col">Duration (Minutes)</th>
-                            </tr>
-                        </thead>
+                    <div>
+                        <table className="table">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Departure Time</th>
+                                    <th scope="col">Departure Station</th>
+                                    <th scope="col">Return Time</th>
+                                    <th scope="col">Return Station</th>
+                                    <th scope="col">Distance (KM)</th>
+                                    <th scope="col">Duration (Minutes)</th>
+                                </tr>
+                            </thead>
 
-                        <tbody>
-                            {
-                                this.state.journey.map((value, index) => {
-                                    return <SingleJourneyEntry
-                                        entry={value}
-                                        key={index}
-                                    ></SingleJourneyEntry>
-                                })
-                            }
-                        </tbody>
-                    </table>
+                            <tbody>
+                                {
+                                    this.state.journey.map((value, index) => {
+                                        return <SingleJourneyEntry
+                                            entry={value}
+                                            key={index}
+                                        ></SingleJourneyEntry>
+                                    })
+                                }
+                            </tbody>
+                        </table>
+
+                        {/* pagination footer here */}
+                        <div className="d-flex justify-content-center">
+                            <div className="col-lg-3">
+                                {/* empty */}
+                            </div>
+                            <div className="col-lg-6">
+                                {/* middle - pagination */}
+                                <div className="row">
+
+                                    <div className="col-sm-2">
+                                        {
+                                            this.state.page.has_previous &&
+                                            <button type="button"
+                                                className="btn btn-dark">
+                                                Previous
+                                            </button>
+                                        }
+                                        {
+                                            !this.state.page.has_previous &&
+                                            <button type="button"
+                                                className="btn btn-secondary" disabled>
+                                                Previous
+                                            </button>
+                                        }
+
+                                    </div>
+                                    <div className="col-lg-8">
+                                        <blockquote className="blockquote text-center">
+                                            <p className="mb-0">Page: {this.state.page.current}</p>
+                                        </blockquote>
+                                    </div>
+                                    <div className="col-sm-2">
+                                        {
+                                            this.state.page.has_next &&
+                                            <button type="button"
+                                                className="btn btn-dark">
+                                                Next
+                                            </button>
+                                        }
+                                        {
+                                            !this.state.page.has_next &&
+                                            <button type="button"
+                                                className="btn btn-secondary">
+                                                Next
+                                            </button>
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="col-lg-3">
+                                {/* empty -  */}
+                            </div>
+                        </div>
+                    </div>
                 }
             </div>
         );
