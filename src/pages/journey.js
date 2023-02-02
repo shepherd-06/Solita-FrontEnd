@@ -16,7 +16,7 @@ class JourneyView extends React.Component {
          * main func.
          * it runs the api scheduler.
          */
-        let url = "http://localhost:8000/ops/get_journey/?page=".concat(page_number)
+        let url = "http://127.0.0.1:8000/ops/get_journey/?page=".concat(page_number)
         fetch(url)
             .then(res => res.json())
             .then(
@@ -48,7 +48,6 @@ class JourneyView extends React.Component {
     }
 
     render() {
-        console.log(this.state.page);
         return (
             <div className='container'>
                 {this.state.journey.length === 0 &&
