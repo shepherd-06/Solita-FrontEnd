@@ -11,12 +11,13 @@ class JourneyView extends React.Component {
         };
     }
 
-    getJourneyData() {
+    getJourneyData(page_number = 1) {
         /**
          * main func.
          * it runs the api scheduler.
          */
-        fetch("http://localhost:8000/ops/get_journey/?page=1")
+        let url = "http://localhost:8000/ops/get_journey/?page=".concat(page_number)
+        fetch(url)
             .then(res => res.json())
             .then(
                 (result) => {
@@ -36,6 +37,14 @@ class JourneyView extends React.Component {
 
     componentDidMount() {
         this.getJourneyData();
+    }
+
+    load_previous_page() {
+        this.getJourneyData(this.state.page.current - 1);
+    }
+
+    load_next_page() {
+        this.getJourneyData(this.state.page.current + 1);
     }
 
     render() {
@@ -93,18 +102,11 @@ class JourneyView extends React.Component {
                                         {
                                             this.state.page.has_previous &&
                                             <button type="button"
-                                                className="btn btn-dark">
+                                                className="btn btn-dark"
+                                                onClick={this.load_previous_page.bind(this)}>
                                                 Previous
                                             </button>
                                         }
-                                        {
-                                            !this.state.page.has_previous &&
-                                            <button type="button"
-                                                className="btn btn-secondary" disabled>
-                                                Previous
-                                            </button>
-                                        }
-
                                     </div>
                                     <div className="col-lg-8">
                                         <blockquote className="blockquote text-center">
@@ -115,14 +117,8 @@ class JourneyView extends React.Component {
                                         {
                                             this.state.page.has_next &&
                                             <button type="button"
-                                                className="btn btn-dark">
-                                                Next
-                                            </button>
-                                        }
-                                        {
-                                            !this.state.page.has_next &&
-                                            <button type="button"
-                                                className="btn btn-secondary">
+                                                className="btn btn-dark"
+                                                onClick={this.load_next_page.bind(this)}>
                                                 Next
                                             </button>
                                         }
