@@ -8,10 +8,8 @@ function Navigation() {
             <Link className="navbar-brand" to="/">Home</Link>
             <div className="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul className="navbar-nav mr-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/">Journey List
-                            <span className="sr-only">(current)</span>
-                        </Link>
+                    <li className="nav-item">
+                        <Link className="nav-link" to="/">Journey List                        </Link>
                     </li>
                     <li className="nav-item">
                         <Link className="nav-link" to="/station">Station List </Link>
