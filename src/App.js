@@ -1,6 +1,6 @@
 import './App.css';
 import React from 'react';
-
+import JourneyView from './journey';
 class App extends React.Component {
 
   constructor(props) {
@@ -31,7 +31,11 @@ class App extends React.Component {
         </nav>
         {/* ----- */}
 
+        <div className='container'>
+          {/* other data here */}
+          <JourneyView />
 
+        </div>
       </div>
     );
   }
