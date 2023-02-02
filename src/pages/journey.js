@@ -50,7 +50,7 @@ class JourneyView extends React.Component {
     render() {
         console.log(this.state.page);
         return (
-            <div>
+            <div className='container'>
                 {this.state.journey.length === 0 &&
                     <div className="info">
                         <h1 className="display">

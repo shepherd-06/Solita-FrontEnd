@@ -1,9 +1,28 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import App from './App';
 import reportWebVitals from './reportWebVitals';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import JourneyView from './pages/journey';
+import Layout from './pages/layout';
+import StationListView from './pages/station_list';
+
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<JourneyView />} />
+          <Route path="station" element={<StationListView />} />
+          {/* <Route path="*" element={<NoPage />} /> */}
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
+}
+
 root.render(
   // <React.StrictMode>
   <App />
