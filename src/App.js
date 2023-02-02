@@ -1,6 +1,7 @@
-import './App.css';
+import './css/App.css';
 import React from 'react';
-import JourneyView from './journey';
+import JourneyView from './pages/journey';
+
 class App extends React.Component {
 
   constructor(props) {

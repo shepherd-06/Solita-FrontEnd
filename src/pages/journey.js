@@ -1,5 +1,5 @@
 import React from "react";
-import SingleJourneyEntry from "./journey_item";
+import SingleJourneyEntry from "../util/journey_item";
 
 class JourneyView extends React.Component {
 
