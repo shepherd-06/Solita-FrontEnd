@@ -16,7 +16,9 @@ class SingleStationItem extends React.Component {
                 <td>{entry.city_fi}</td>
                 <td>{entry.operator}</td>
                 <td>{entry.capacity}</td>
-                <Link to="/single_station" type="button" className="btn btn-outline-success">
+                <Link to="/single_station"
+                    state={{ station: entry }}
+                    type="button" className="btn btn-outline-success">
                     View Details
                 </Link>
             </tr>
