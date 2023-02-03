@@ -5,6 +5,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import JourneyView from './pages/journey';
 import Layout from './pages/layout';
 import StationListView from './pages/station_list';
+import SingleStationView from './pages/single_station';
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -15,6 +16,7 @@ export default function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<JourneyView />} />
+          <Route path="single_station" element={<SingleStationView />} />
           <Route path="station" element={<StationListView />} />
           {/* <Route path="*" element={<NoPage />} /> */}
         </Route>

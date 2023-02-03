@@ -41,3 +41,17 @@
 .navbar {
   padding-left: 5%;
 }
+
+.table_row {
+  cursor: pointer;
+}
+
+.table_row:hover {
+  background-color: #FAF0CC;
+  transition: 0.5s;
+}
+
+button:hover {
+  background-color: #FAF0CC;
+  transition: 0.5s;
+}

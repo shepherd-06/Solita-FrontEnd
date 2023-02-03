@@ -1,5 +1,7 @@
 import React from 'react';
 import SingleStationItem from '../util/station_item';
+import '../css/App.css';
+
 class StationListView extends React.Component {
 
     constructor(props) {
@@ -47,8 +49,6 @@ class StationListView extends React.Component {
     }
 
     render() {
-        console.log(this.state.page);
-
         return (
             <div className='container'>
                 {
