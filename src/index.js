@@ -6,7 +6,7 @@ import JourneyView from './pages/journey';
 import Layout from './pages/layout';
 import StationListView from './pages/station_list';
 import SingleStationView from './pages/single_station';
-
+import ErrorPage from './pages/no_page';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -18,7 +18,7 @@ export default function App() {
           <Route index element={<JourneyView />} />
           <Route path="single_station" element={<SingleStationView />} />
           <Route path="station" element={<StationListView />} />
-          {/* <Route path="*" element={<NoPage />} /> */}
+          <Route path="*" element={<ErrorPage />} />
         </Route>
       </Routes>
     </BrowserRouter>

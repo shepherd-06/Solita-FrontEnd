@@ -102,7 +102,7 @@ class JourneyView extends React.Component {
                                         {
                                             this.state.page.has_previous &&
                                             <button type="button"
-                                                className="btn btn-dark"
+                                                className="btn btn-dark page_btn"
                                                 onClick={this.load_previous_page.bind(this)}>
                                                 Previous
                                             </button>
@@ -117,7 +117,7 @@ class JourneyView extends React.Component {
                                         {
                                             this.state.page.has_next &&
                                             <button type="button"
-                                                className="btn btn-dark"
+                                                className="btn btn-dark page_btn"
                                                 onClick={this.load_next_page.bind(this)}>
                                                 Next
                                             </button>

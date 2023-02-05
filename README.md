@@ -1,12 +1,30 @@
-# Getting Started with Create React App
+# Helsinki City Bike App (FrontEnd)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL).
 
-## Available Scripts
+Backend (Deployed): <https://test.ibtehaz.xyz/ops/>
 
-In the project directory, you can run:
+Frontend (Github Repo): <https://github.com/shepherd-06/Solita-FrontEnd>
 
-### `npm start`
+Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
+
+Full feature list of the web-app is given here.
+
+## Requirements
+
+This project has been built on MacOS. It's published on a free `netlify.app` website. This server comes along with a `.env` file. Which contains the backend servers URL only. If you want to change the backend server URL, you can change it there.
+
+## Installation and Setup Instructions
+
+Clone down this repository. You will need node and npm installed globally on your machine.
+
+### Installation
+
+`npm install`
+
+### To Start Server
+
+`npm start`
 
 Runs the app in the development mode.\
 Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
@@ -14,57 +32,66 @@ Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
 
-### `npm test`
+### To Build for Production
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
+`npm run build`
 
 Builds the app for production to the `build` folder.\
 It correctly bundles React in production mode and optimizes the build for the best performance.
 
 The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+The app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Feature List
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+### Data Import
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* [Completed] Import data from the CSV files to a database or in-memory storage.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* [Completed] Validate data before importing.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* [Completed] Don't import journeys that lasted for less than ten seconds
 
-## Learn More
+* [Completed] Don't import journeys that covered distances shorter than 10 meters
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Journey List View
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* [Completed] List Journeys
+* [Completed] For each journey show departure and return stations, covered distance in kilometers and duration in minutes
+* [Completed] Pagination
+* [TODO] Ordering per column
+* [TODO] Searching
+* [TODO] Filtering
 
-### Code Splitting
+### Station list
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* [Completed] List all the stations
+* [Completed] Pagination
+* [TODO] Searching
 
-### Analyzing the Bundle Size
+### Single station view
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+* [Completed] Station name
+* [Completed] Station address
+* [Completed] Total number of journeys starting from the station
+* [Completed] Total number of journeys ending at the station
+* [Completed] Station location on the map
+* [Completed] The average distance of a journey starting from the station
+* [Completed] The average distance of a journey ending at the station
+* [Completed] Top 5 most popular return stations for journeys starting from the station
+* [Completed] Top 5 most popular departure stations for journeys ending at the station
+* [TODO] Ability to filter all the calculations per month
 
-### Making a Progressive Web App
+### Additional Features
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+* [TODO] Endpoints to store new journeys data or new bicycle stations
+* [TODO] Running backend in Docker
+* [Completed] Running backend in Cloud
+* [TODO] Implement E2E tests
+* [TODO] Create UI for adding journeys or bicycle stations
 
-### Advanced Configuration
+-----------
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Hyva! Happy hacking!
