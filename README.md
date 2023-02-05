@@ -4,11 +4,11 @@ This is the pre-assignment for Solita Dev Academy Finland 2023. This project use
 
 Backend (Deployed): <https://test.ibtehaz.xyz/ops/>
 
-Frontend (Github Repo): <https://github.com/shepherd-06/Solita-FrontEnd>
-
 Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
 
-Full feature list of the web-app is given here.
+Backend (Github Repo): <https://github.com/shepherd-06/Solita-Backend>
+
+Full feature list of the web-app is given [here](https://github.com/shepherd-06/Solita-FrontEnd#feature-list).
 
 ## Requirements
 
