@@ -78,8 +78,8 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [Completed] Total number of journeys starting from the station
 * [Completed] Total number of journeys ending at the station
 * [Completed] Station location on the map
-* [TODO] The average distance of a journey starting from the station
-* [TODO] The average distance of a journey ending at the station
+* [Completed] The average distance of a journey starting from the station
+* [Completed] The average distance of a journey ending at the station
 * [TODO] Top 5 most popular return stations for journeys starting from the station
 * [TODO] Top 5 most popular departure stations for journeys ending at the station
 * [TODO] Ability to filter all the calculations per month

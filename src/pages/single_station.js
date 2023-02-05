@@ -10,11 +10,11 @@ function SingleStationView() {
     let station = state["station"];
     const [startFrom, setStartFrom] = useState(0);
     const [returnTo, setReturnTo] = useState(0);
+    const [avgFrom, setAvgFrom] = useState(0);
+    const [avgTo, setAvgTo] = useState(0);
 
     const base_url = process.env.REACT_APP_BASE_URL;
-    const station_data_url = base_url + "/ops/station/?station_id=" + station["id"];
-
-    console.log(station);
+    const station_data_url = base_url + "/station/?station_id=" + station["id"];
 
     fetch(station_data_url)
         .then(res => res.json())
@@ -23,6 +23,9 @@ function SingleStationView() {
                 const data = result.data;
                 setStartFrom(data["start_from"]);
                 setReturnTo(data["return_to"]);
+                setAvgFrom(data["avg_departure_distance"]);
+                setAvgTo(data["avg_return_distance"]);
+                console.log(data);
             },
             // Note: it's important to handle errors here
             // instead of a catch() block so that we don't swallow
@@ -47,6 +50,12 @@ function SingleStationView() {
                     </p>
                     <p className='sin-station-p'>
                         Journey's Ended at {station["name_fi"]}: {returnTo}
+                    </p>
+                    <p className='sin-station-p'>
+                        Average Distance for Journey's Starting from {station["name_fi"]}: {(avgFrom / 1000).toFixed(2)} km
+                    </p>
+                    <p className='sin-station-p'>
+                        Average Distance for Journey's Returning to {station["name_fi"]}: {(avgTo / 1000).toFixed(2)} km
                     </p>
                 </div>
                 <div className='col-lg-6'>
