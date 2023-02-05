@@ -77,7 +77,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [Completed] Station address
 * [Completed] Total number of journeys starting from the station
 * [Completed] Total number of journeys ending at the station
-* [TODO] Station location on the map
+* [Completed] Station location on the map
 * [TODO] The average distance of a journey starting from the station
 * [TODO] The average distance of a journey ending at the station
 * [TODO] Top 5 most popular return stations for journeys starting from the station
