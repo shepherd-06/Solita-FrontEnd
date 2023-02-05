@@ -17,7 +17,8 @@ class StationListView extends React.Component {
          * main func.
          * it runs the api scheduler.
          */
-        let url = "http://127.0.0.1:8000/ops/get_station/?page=".concat(page_number)
+        let base_url = process.env.REACT_APP_BASE_URL;
+        let url = base_url + "/get_station/?page=" + page_number;
         fetch(url)
             .then(res => res.json())
             .then(

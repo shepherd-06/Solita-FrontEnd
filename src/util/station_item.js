@@ -8,7 +8,6 @@ class SingleStationItem extends React.Component {
     render() {
         let entry = this.props.entry;
         return (
-            // <Link to="single_station">
             <tr className="table_row">
                 <th scope="row">{entry.id}</th>
                 <td>{entry.name_fi}</td>
@@ -22,7 +21,6 @@ class SingleStationItem extends React.Component {
                     View Details
                 </Link>
             </tr>
-            // </Link>
         );
     }
 }

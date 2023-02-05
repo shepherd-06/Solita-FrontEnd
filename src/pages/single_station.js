@@ -9,7 +9,8 @@ function SingleStationView() {
     const [startFrom, setStartFrom] = useState(0);
     const [returnTo, setReturnTo] = useState(0);
 
-    const station_data_url = "http://localhost:8000/ops/station/?station_id=".concat(station["id"]);
+    const base_url = process.env.REACT_APP_BASE_URL;
+    const station_data_url = base_url + "/ops/station/?station_id=" + station["id"];
 
     fetch(station_data_url)
         .then(res => res.json())
@@ -30,21 +31,19 @@ function SingleStationView() {
     return (
         <div className='container'>
             <div className='row'>
-
+                <br />
                 <div className='col-lg-6'>
-                    <h1 className='display-1'>
-                        Station
+                    <h1 className='display-4'>
+                        Station: {station["name_fi"]}
                     </h1>
-
-                    <h3 className='h3'>Station Name: {station["name_fi"]}</h3>
                     <p>
                         Address: {station["address_fi"] + " " + station["city_fi"]}
                     </p>
                     <p>
-                        Number of Journey's Started from Station {station["name_fi"]}: {startFrom}
+                        Journey's Started from {station["name_fi"]}: {startFrom}
                     </p>
                     <p>
-                        Number of Journey's Ended at Station {station["name_fi"]}: {returnTo}
+                        Journey's Ended at {station["name_fi"]}: {returnTo}
                     </p>
                 </div>
                 <div className='col-lg-6'>
