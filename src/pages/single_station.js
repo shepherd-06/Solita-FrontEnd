@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
+import '../css/App.css';
 
 
 function SingleStationView() {
@@ -30,19 +31,18 @@ function SingleStationView() {
 
     return (
         <div className='container'>
-            <div className='row'>
-                <br />
+            <div className='row sin-station-free-space'>
                 <div className='col-lg-6'>
                     <h1 className='display-4'>
                         Station: {station["name_fi"]}
                     </h1>
-                    <p>
+                    <p className='sin-station-p'>
                         Address: {station["address_fi"] + " " + station["city_fi"]}
                     </p>
-                    <p>
+                    <p className='sin-station-p'>
                         Journey's Started from {station["name_fi"]}: {startFrom}
                     </p>
-                    <p>
+                    <p className='sin-station-p'>
                         Journey's Ended at {station["name_fi"]}: {returnTo}
                     </p>
                 </div>

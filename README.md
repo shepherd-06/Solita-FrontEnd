@@ -60,7 +60,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 * [Completed] List Journeys
 * [Completed] For each journey show departure and return stations, covered distance in kilometers and duration in minutes
-* [Pagination] Pagination
+* [Completed] Pagination
 * [TODO] Ordering per column
 * [TODO] Searching
 * [TODO] Filtering

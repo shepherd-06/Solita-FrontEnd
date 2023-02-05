@@ -51,7 +51,21 @@
   transition: 0.5s;
 }
 
-button:hover {
+.page_btn:hover {
   background-color: #FAF0CC;
+  color: #282c34;
   transition: 0.5s;
+}
+
+.navbar-nav {
+  margin-left: auto;
+  margin-right: 4%;
+}
+
+.sin-station-free-space {
+  margin-top: 2%;
+}
+
+.sin-station-p {
+  font-size: 1.2em;
 }
