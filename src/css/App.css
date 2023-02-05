@@ -74,3 +74,8 @@
   width: 100wh;
   height: 100vh;
 }
+
+.nav_item_focus {
+  font-size: 1.0em;
+  color: antiquewhite;
+}
