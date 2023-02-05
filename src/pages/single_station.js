@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import '../css/App.css';
 import MapView from '../util/map_view';
+import ShowStationNames from '../util/station_names';
 
 
 function SingleStationView() {
@@ -12,6 +13,8 @@ function SingleStationView() {
     const [returnTo, setReturnTo] = useState(0);
     const [avgFrom, setAvgFrom] = useState(0);
     const [avgTo, setAvgTo] = useState(0);
+    const [popDepart, setPopDepart] = useState([]);
+    const [popReturn, setPopReturn] = useState([]);
 
     const base_url = process.env.REACT_APP_BASE_URL;
     const station_data_url = base_url + "/station/?station_id=" + station["id"];
@@ -25,6 +28,8 @@ function SingleStationView() {
                 setReturnTo(data["return_to"]);
                 setAvgFrom(data["avg_departure_distance"]);
                 setAvgTo(data["avg_return_distance"]);
+                setPopDepart(data["popular_departure"]);
+                setPopReturn(data["popular_return"]);
                 console.log(data);
             },
             // Note: it's important to handle errors here
@@ -56,6 +61,32 @@ function SingleStationView() {
                     </p>
                     <p className='sin-station-p'>
                         Average Distance for Journey's Returning to {station["name_fi"]}: {(avgTo / 1000).toFixed(2)} km
+                    </p>
+                    <p className='sin-station-p'>
+                        Top 5 Popular Departure Station:
+                        <ul>
+                            {
+                                popDepart.map((value, index) => {
+                                    return <ShowStationNames
+                                        entry={value}
+                                        key={index}
+                                    ></ShowStationNames>
+                                })
+                            }
+                        </ul>
+                    </p>
+                    <p className='sin-station-p'>
+                        Top 5 Popular Return Station:
+                        <ul>
+                            {
+                                popReturn.map((value, index) => {
+                                    return <ShowStationNames
+                                        entry={value}
+                                        key={index}
+                                    ></ShowStationNames>
+                                })
+                            }
+                        </ul>
                     </p>
                 </div>
                 <div className='col-lg-6'>

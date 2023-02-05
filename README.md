@@ -80,15 +80,15 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [Completed] Station location on the map
 * [Completed] The average distance of a journey starting from the station
 * [Completed] The average distance of a journey ending at the station
-* [TODO] Top 5 most popular return stations for journeys starting from the station
-* [TODO] Top 5 most popular departure stations for journeys ending at the station
+* [Completed] Top 5 most popular return stations for journeys starting from the station
+* [Completed] Top 5 most popular departure stations for journeys ending at the station
 * [TODO] Ability to filter all the calculations per month
 
 ### Additional Features
 
 * [TODO] Endpoints to store new journeys data or new bicycle stations
 * [TODO] Running backend in Docker
-* [TODO] Running backend in Cloud
+* [Completed] Running backend in Cloud
 * [TODO] Implement E2E tests
 * [TODO] Create UI for adding journeys or bicycle stations
 
