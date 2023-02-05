@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useLocation } from 'react-router-dom'
 import '../css/App.css';
+import MapView from '../util/map_view';
 
 
 function SingleStationView() {
@@ -12,6 +13,8 @@ function SingleStationView() {
 
     const base_url = process.env.REACT_APP_BASE_URL;
     const station_data_url = base_url + "/ops/station/?station_id=" + station["id"];
+
+    console.log(station);
 
     fetch(station_data_url)
         .then(res => res.json())
@@ -48,6 +51,7 @@ function SingleStationView() {
                 </div>
                 <div className='col-lg-6'>
                     {/* add map view here */}
+                    <MapView station_name={station["name_fi"]} coordinate={station["coordinate"]} />
                 </div>
             </div>
         </div>
