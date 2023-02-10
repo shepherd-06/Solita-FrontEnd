@@ -2,13 +2,15 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL).
 
-Backend (Deployed): <https://test.ibtehaz.xyz/ops/>
+Backend (Deployed): ~~<https://test.ibtehaz.xyz/ops/>~~ [Cloud Server has been taken into offline]
 
 Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
 
 Backend (Github Repo): <https://github.com/shepherd-06/Solita-Backend>
 
 Full feature list of the web-app is given [here](https://github.com/shepherd-06/Solita-FrontEnd#feature-list).
+
+Screenshots of the full website: [here](https://github.com/shepherd-06/Solita-FrontEnd#screenshots),
 
 ## Requirements
 
@@ -92,6 +94,19 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [TODO] Implement E2E tests
 * [TODO] Create UI for adding journeys or bicycle stations
 
------------
+## Screenshots
 
+### Home Page (List of Journeys)
+
+![home page](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.18.png?raw=true)
+
+### List of Station
+
+![station list](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.34.png?raw=true)
+
+### Single Station View
+
+![stationview](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.54.png?raw=true)
+
+-----------
 Hyva! Happy hacking!
