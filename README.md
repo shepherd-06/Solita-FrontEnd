@@ -94,8 +94,19 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 * [TODO] Implement E2E tests
 * [TODO] Create UI for adding journeys or bicycle stations
 
------------
-
 ## Screenshots
 
+### Home Page (List of Journeys)
+
+![home page](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.18.png?raw=true)
+
+### List of Station
+
+![station list](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.34.png?raw=true)
+
+### Single Station View
+
+![stationview](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.54.png?raw=true)
+
+-----------
 Hyva! Happy hacking!
