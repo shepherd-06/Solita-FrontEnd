@@ -14,7 +14,7 @@ export default function App() {
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Layout />}>
+        <Route path="/Solita-FrontEnd" element={<Layout />}>
           <Route index element={<JourneyView />} />
           <Route path="single_station" element={<SingleStationView />} />
           <Route path="station" element={<StationListView />} />
