@@ -4,7 +4,7 @@ This is the pre-assignment for Solita Dev Academy Finland 2023. This project use
 
 Backend (Deployed): ~~<https://test.ibtehaz.xyz/ops/>~~ [Cloud Server has been taken into offline]
 
-Frontend (Deployed): <https://jolly-platypus-a9a828.netlify.app/>
+Frontend (Deployed): <https://shepherd-06.github.io/Solita-FrontEnd/>
 
 Backend (Github Repo): <https://github.com/shepherd-06/Solita-Backend>
 
@@ -29,7 +29,7 @@ Clone down this repository. You will need node and npm installed globally on you
 `npm start`
 
 Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Open [http://localhost:3000/Solita-FrontEnd](http://localhost:3000/Solita-FrontEnd) to view it in your browser.
 
 The page will reload when you make changes.\
 You may also see any lint errors in the console.
