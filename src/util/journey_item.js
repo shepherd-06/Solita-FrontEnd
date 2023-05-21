@@ -1,4 +1,5 @@
 import React from "react";
+import '../css/App.css';
 
 
 class SingleJourneyEntry extends React.Component {
@@ -12,7 +13,7 @@ class SingleJourneyEntry extends React.Component {
         let minutes = Math.floor(entry["duration"] / 60);
 
         return (
-            <tr>
+            <tr className="journey_row">
                 <td>{departure_time.toLocaleString('en-GB')}</td>
                 <td>{entry["departure_station"]}</td>
                 <td>{return_time.toLocaleString('en-GB')}</td>

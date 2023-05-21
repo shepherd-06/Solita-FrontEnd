@@ -79,3 +79,45 @@
   font-size: 1.0em;
   color: antiquewhite;
 }
+
+.main_bg {
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+  min-height: 100vh;
+  height: 100vh;
+  max-height: 100vh;
+  padding-top: 20px;
+  background: linear-gradient(-45deg, #1c0f2b, #1b0227);
+  color: aliceblue;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+
+  50% {
+    background-position: 100% 50%;
+  }
+
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+.journey_row {
+  color: black;
+}
+
+.journey_header {
+  font-size: larger;
+}
+
+.journey_view {
+  background-color: aliceblue;
+  border-radius: 15px;
+}
+
+.mb-0 {
+  color: black;
+}
