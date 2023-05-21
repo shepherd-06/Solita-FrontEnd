@@ -12,9 +12,9 @@ const root = ReactDOM.createRoot(document.getElementById('root'));
 
 export default function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename='/Solita-FrontEnd'>
       <Routes>
-        <Route path="/Solita-FrontEnd" element={<Layout />}>
+        <Route path="/" element={<Layout />}>
           <Route index element={<JourneyView />} />
           <Route path="single_station" element={<SingleStationView />} />
           <Route path="station" element={<StationListView />} />
