@@ -42,10 +42,6 @@
   padding-left: 5%;
 }
 
-.table_row {
-  cursor: pointer;
-}
-
 .table_row:hover {
   background-color: #faf0cc;
   transition: 0.5s;
