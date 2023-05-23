@@ -37,7 +37,7 @@ class JourneyView extends React.Component {
             journey: result["data"],
             is_spinner: false,
             is_success: true,
-            is_error: result["data"] === 0,
+            is_error: result["data"].length === 0,
           });
         },
         // Note: it's important to handle errors here
@@ -94,11 +94,10 @@ class JourneyView extends React.Component {
 
           {/* error or no data */}
           {this.state.is_error && (
-            <div className="info">
+            <div>
               <h1 className="display">We are sorry!</h1>
               <h3 className="h3">
-                We are unable to fetch any information from the server! Try
-                again later!
+                We are unable to fetch any information from the server!
               </h3>
             </div>
           )}
