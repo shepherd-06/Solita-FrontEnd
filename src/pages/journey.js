@@ -2,6 +2,7 @@ import React from "react";
 import SingleJourneyEntry from "../util/journey_item";
 import "../css/App.css";
 import Spinner from "../util/spinner";
+import InfinitySpinner from "../util/infinity_spinner";
 
 class JourneyView extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class JourneyView extends React.Component {
       is_spinner: false,
       is_success: false,
       is_error: false,
+      is_btn_spinner: false,
     };
   }
 
@@ -55,6 +57,7 @@ class JourneyView extends React.Component {
             is_spinner: false,
             is_success: true,
             is_error: resultData.length === 0,
+            is_btn_spinner: false,
           });
         },
         // Note: it's important to handle errors here
@@ -78,8 +81,10 @@ class JourneyView extends React.Component {
 
     if (journeyTime !== null) {
       const storedTimestamp = new Date(journeyTime).getTime();
-      const currentTime = new Date().getTime(); 
-      timeDifferenceInMinutes = Math.floor((currentTime - storedTimestamp) / (1000 * 60));
+      const currentTime = new Date().getTime();
+      timeDifferenceInMinutes = Math.floor(
+        (currentTime - storedTimestamp) / (1000 * 60)
+      );
     }
 
     if (journeyTime === null || timeDifferenceInMinutes >= 30) {
@@ -102,10 +107,16 @@ class JourneyView extends React.Component {
   }
 
   load_previous_page() {
+    this.setState({
+      is_btn_spinner: true,
+    });
     this.getJourneyData(this.state.page.current - 1);
   }
 
   load_next_page() {
+    this.setState({
+      is_btn_spinner: true,
+    });
     this.getJourneyData(this.state.page.current + 1);
   }
 
@@ -190,6 +201,11 @@ class JourneyView extends React.Component {
                   </div>
                   <div className="col-lg-8">
                     <blockquote className="blockquote text-center">
+                      {this.state.is_btn_spinner && (
+                        <div align="center">
+                          <InfinitySpinner />
+                        </div>
+                      )}
                       <p className="mb-0">Page: {this.state.page.current}</p>
                     </blockquote>
                   </div>

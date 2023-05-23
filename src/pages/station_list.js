@@ -2,6 +2,7 @@ import React from "react";
 import SingleStationItem from "../util/station_item";
 import "../css/App.css";
 import Spinner from "../util/spinner";
+import InfinitySpinner from "../util/infinity_spinner";
 
 class StationListView extends React.Component {
   constructor(props) {
@@ -13,6 +14,7 @@ class StationListView extends React.Component {
       is_spinner: true,
       is_success: false,
       is_error: false,
+      is_btn_spinner: false,
     };
   }
 
@@ -50,6 +52,7 @@ class StationListView extends React.Component {
             is_spinner: false,
             is_success: true,
             is_error: false,
+            is_btn_spinner: false,
           });
         },
         (error) => {
@@ -95,10 +98,16 @@ class StationListView extends React.Component {
   }
 
   load_previous_page() {
+    this.setState({
+      is_btn_spinner: true,
+    });
     this.getAllStation(this.state.page.current - 1);
   }
 
   load_next_page() {
+    this.setState({
+      is_btn_spinner: true,
+    });
     this.getAllStation(this.state.page.current + 1);
   }
 
@@ -165,6 +174,11 @@ class StationListView extends React.Component {
                   </div>
                   <div className="col-lg-8">
                     <blockquote className="blockquote text-center">
+                      {this.state.is_btn_spinner && (
+                        <div align="center">
+                          <InfinitySpinner />
+                        </div>
+                      )}
                       <p className="mb-0">Page: {this.state.page.current}</p>
                     </blockquote>
                   </div>

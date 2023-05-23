@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import "../css/App.css";
 import MapView from "../util/map_view";
 import ShowStationNames from "../util/station_names";
-import Spinner from "../util/spinner";
 import InfinitySpinner from "../util/infinity_spinner";
 
 function SingleStationView() {
