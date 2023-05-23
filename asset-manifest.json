@@ -1,16 +1,16 @@
 {
   "files": {
     "main.css": "/Solita-FrontEnd/static/css/main.4a2f3dd8.css",
-    "main.js": "/Solita-FrontEnd/static/js/main.824127ee.js",
+    "main.js": "/Solita-FrontEnd/static/js/main.55ea4e62.js",
     "static/js/787.cda612ba.chunk.js": "/Solita-FrontEnd/static/js/787.cda612ba.chunk.js",
     "static/media/404_not_found.jpeg": "/Solita-FrontEnd/static/media/404_not_found.8c602802b8e1106af9f4.jpeg",
     "index.html": "/Solita-FrontEnd/index.html",
     "main.4a2f3dd8.css.map": "/Solita-FrontEnd/static/css/main.4a2f3dd8.css.map",
-    "main.824127ee.js.map": "/Solita-FrontEnd/static/js/main.824127ee.js.map",
+    "main.55ea4e62.js.map": "/Solita-FrontEnd/static/js/main.55ea4e62.js.map",
     "787.cda612ba.chunk.js.map": "/Solita-FrontEnd/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.4a2f3dd8.css",
-    "static/js/main.824127ee.js"
+    "static/js/main.55ea4e62.js"
   ]
 }
