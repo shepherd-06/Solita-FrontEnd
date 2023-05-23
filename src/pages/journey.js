@@ -67,107 +67,105 @@ class JourneyView extends React.Component {
 
   render() {
     return (
-      <div className="">
-        <div className="container">
-          {/* spinner */}
-          {this.state.journey.length === 0 && this.state.is_spinner && (
-            <div className="row">
-              <div className="col-md-4"></div>
-              <div className="col-md-4">
-                <div
-                  className="row"
-                  style={{
-                    position: "relative",
-                    marginTop: "20%",
-                    paddingLeft: "20%",
-                  }}
-                >
-                  <div className="vertical-center">
-                    <Spinner />
-                    <p className="h3">Loading...</p>
+      <div className="container" style={{paddingBottom: "15px"}}>
+        {/* spinner */}
+        {this.state.journey.length === 0 && this.state.is_spinner && (
+          <div className="row">
+            <div className="col-md-4"></div>
+            <div className="col-md-4">
+              <div
+                className="row"
+                style={{
+                  position: "relative",
+                  marginTop: "20%",
+                  paddingLeft: "20%",
+                }}
+              >
+                <div className="vertical-center">
+                  <Spinner />
+                  <p className="h3">Loading...</p>
+                </div>
+              </div>
+            </div>
+            <div className="col-md-4"> </div>
+          </div>
+        )}
+
+        {/* error or no data */}
+        {this.state.is_error && (
+          <div>
+            <h1 className="display">We are sorry!</h1>
+            <h3 className="h3">
+              We are unable to fetch any information from the server!
+            </h3>
+          </div>
+        )}
+
+        {this.state.journey.length !== 0 && this.state.is_success && (
+          <div className="journey_view">
+            <table className="table">
+              <thead>
+                <tr className="journey_header">
+                  <th scope="col">Departure Time</th>
+                  <th scope="col">Departure Station</th>
+                  <th scope="col">Return Time</th>
+                  <th scope="col">Return Station</th>
+                  <th scope="col">Distance (KM)</th>
+                  <th scope="col">Duration (Minutes)</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                {this.state.journey.map((value, index) => {
+                  return (
+                    <SingleJourneyEntry
+                      entry={value}
+                      key={index}
+                    ></SingleJourneyEntry>
+                  );
+                })}
+              </tbody>
+            </table>
+
+            {/* pagination footer here */}
+            <div className="d-flex justify-content-center">
+              <div className="col-lg-3">{/* empty */}</div>
+              <div className="col-lg-6">
+                {/* middle - pagination */}
+                <div className="row">
+                  <div className="col-sm-2">
+                    {this.state.page.has_previous && (
+                      <button
+                        type="button"
+                        className="btn page_btn"
+                        onClick={this.load_previous_page.bind(this)}
+                      >
+                        Previous
+                      </button>
+                    )}
+                  </div>
+                  <div className="col-lg-8">
+                    <blockquote className="blockquote text-center">
+                      <p className="mb-0">Page: {this.state.page.current}</p>
+                    </blockquote>
+                  </div>
+                  <div className="col-sm-2">
+                    {this.state.page.has_next && (
+                      <button
+                        type="button"
+                        className="btn page_btn"
+                        onClick={this.load_next_page.bind(this)}
+                      >
+                        Next
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
-              <div className="col-md-4"> </div>
+              <div className="col-lg-3">{/* empty -  */}</div>
             </div>
-          )}
-
-          {/* error or no data */}
-          {this.state.is_error && (
-            <div>
-              <h1 className="display">We are sorry!</h1>
-              <h3 className="h3">
-                We are unable to fetch any information from the server!
-              </h3>
-            </div>
-          )}
-
-          {this.state.journey.length !== 0 && this.state.is_success && (
-            <div className="journey_view">
-              <table className="table">
-                <thead>
-                  <tr className="journey_header">
-                    <th scope="col">Departure Time</th>
-                    <th scope="col">Departure Station</th>
-                    <th scope="col">Return Time</th>
-                    <th scope="col">Return Station</th>
-                    <th scope="col">Distance (KM)</th>
-                    <th scope="col">Duration (Minutes)</th>
-                  </tr>
-                </thead>
-
-                <tbody>
-                  {this.state.journey.map((value, index) => {
-                    return (
-                      <SingleJourneyEntry
-                        entry={value}
-                        key={index}
-                      ></SingleJourneyEntry>
-                    );
-                  })}
-                </tbody>
-              </table>
-
-              {/* pagination footer here */}
-              <div className="d-flex justify-content-center">
-                <div className="col-lg-3">{/* empty */}</div>
-                <div className="col-lg-6">
-                  {/* middle - pagination */}
-                  <div className="row">
-                    <div className="col-sm-2">
-                      {this.state.page.has_previous && (
-                        <button
-                          type="button"
-                          className="btn btn-dark page_btn"
-                          onClick={this.load_previous_page.bind(this)}
-                        >
-                          Previous
-                        </button>
-                      )}
-                    </div>
-                    <div className="col-lg-8">
-                      <blockquote className="blockquote text-center">
-                        <p className="mb-0">Page: {this.state.page.current}</p>
-                      </blockquote>
-                    </div>
-                    <div className="col-sm-2">
-                      {this.state.page.has_next && (
-                        <button
-                          type="button"
-                          className="btn btn-dark page_btn"
-                          onClick={this.load_next_page.bind(this)}
-                        >
-                          Next
-                        </button>
-                      )}
-                    </div>
-                  </div>
-                </div>
-                <div className="col-lg-3">{/* empty -  */}</div>
-              </div>
-            </div>
-          )}
-        </div>
+          </div>
+        )}
       </div>
     );
   }

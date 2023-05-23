@@ -51,9 +51,14 @@
   transition: 0.5s;
 }
 
+.page_btn {
+  background-color: #1C7AD9;
+  color: #faf0cc;
+}
+
 .page_btn:hover {
-  background-color: #faf0cc;
-  color: #282c34;
+  background-color: #3F7D20;
+  color: #faf0cc;
   transition: 0.5s;
 }
 
@@ -84,8 +89,7 @@
   background-size: 400% 400%;
   animation: gradient 15s ease infinite;
   min-height: 100vh;
-  height: 100vh;
-  max-height: 100vh;
+  height: 100%;
   padding-top: 20px;
   width: 100%;
   background: linear-gradient(-45deg, #67aaf9, #7be0d6, #9dc9fb, #cdf3f0);
@@ -157,6 +161,7 @@ h1 {
   color: #121217;
 }
 
-.nav-item {
+.nav-item, .navbar-brand{
   font-size: large;
+  font-weight: 500;
 }
