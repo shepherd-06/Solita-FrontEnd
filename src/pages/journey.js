@@ -32,12 +32,29 @@ class JourneyView extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          const resultPage = result["page"];
+          const resultData = result["data"];
+
+          localStorage.setItem("journey", JSON.stringify(resultData));
+          localStorage.setItem(
+            "journeyPage",
+            JSON.stringify({
+              page: resultPage,
+            })
+          );
+          localStorage.setItem(
+            "journeyTime",
+            JSON.stringify({
+              setTime: new Date(),
+            })
+          );
+
           this.setState({
-            page: result["page"],
-            journey: result["data"],
+            page: resultPage,
+            journey: resultData,
             is_spinner: false,
             is_success: true,
-            is_error: result["data"].length === 0,
+            is_error: resultData.length === 0,
           });
         },
         // Note: it's important to handle errors here
@@ -54,7 +71,34 @@ class JourneyView extends React.Component {
   }
 
   componentDidMount() {
-    this.getJourneyData();
+    // serve from localStorage if exist. within 30 minutes of last data fetch.
+
+    const journeyTime = localStorage.getItem("journeyTime");
+    let timeDifferenceInMinutes = 0;
+
+    if (journeyTime !== null) {
+      const storedTimestamp = new Date(journeyTime).getTime();
+      const currentTime = new Date().getTime(); 
+      timeDifferenceInMinutes = Math.floor((currentTime - storedTimestamp) / (1000 * 60));
+    }
+
+    if (journeyTime === null || timeDifferenceInMinutes >= 30) {
+      // fetch new data.
+      this.getJourneyData();
+    } else {
+      // show old data.
+      const storedJourneyData = localStorage.getItem("journey");
+      const storedJourneyPage = localStorage.getItem("journeyPage");
+      const parsedJourneyPage = JSON.parse(storedJourneyPage)["page"];
+
+      this.setState({
+        page: parsedJourneyPage,
+        journey: JSON.parse(storedJourneyData),
+        is_spinner: false,
+        is_success: true,
+        is_error: JSON.parse(storedJourneyData).length === 0,
+      });
+    }
   }
 
   load_previous_page() {
@@ -67,7 +111,7 @@ class JourneyView extends React.Component {
 
   render() {
     return (
-      <div className="container" style={{paddingBottom: "15px"}}>
+      <div className="container" style={{ paddingBottom: "15px" }}>
         {/* spinner */}
         {this.state.journey.length === 0 && this.state.is_spinner && (
           <div className="row">
