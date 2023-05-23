@@ -27,9 +27,26 @@ class StationListView extends React.Component {
       .then((res) => res.json())
       .then(
         (result) => {
+          const stationPage = result["page"];
+          const stationData = result["data"];
+
+          localStorage.setItem("station", JSON.stringify(stationData));
+          localStorage.setItem(
+            "stationPage",
+            JSON.stringify({
+              page: stationPage,
+            })
+          );
+          localStorage.setItem(
+            "stationTime",
+            JSON.stringify({
+              setTime: new Date(),
+            })
+          );
+
           this.setState({
-            page: result["page"],
-            station: result["data"],
+            page: stationPage,
+            station: stationData,
             is_spinner: false,
             is_success: true,
             is_error: false,
@@ -47,7 +64,34 @@ class StationListView extends React.Component {
   }
 
   componentDidMount() {
-    this.getAllStation();
+    const stationTime = localStorage.getItem("stationTime");
+    let timeDifferenceInMinutes = 0;
+
+    if (stationTime !== null) {
+      const storedTimestamp = new Date(stationTime).getTime();
+      const currentTime = new Date().getTime();
+      timeDifferenceInMinutes = Math.floor(
+        (currentTime - storedTimestamp) / (1000 * 60)
+      );
+    }
+
+    if (stationTime === null) {
+      // fetch new data.
+      this.getAllStation();
+    } else {
+      // show old data.
+      const storedStationData = localStorage.getItem("station");
+      const storedStationPage = localStorage.getItem("stationPage");
+      const parsedStationPage = JSON.parse(storedStationPage)["page"];
+
+      this.setState({
+        page: parsedStationPage,
+        station: JSON.parse(storedStationData),
+        is_spinner: false,
+        is_success: true,
+        is_error: false,
+      });
+    }
   }
 
   load_previous_page() {
@@ -62,7 +106,7 @@ class StationListView extends React.Component {
     return (
       <div className="container">
         {this.state.station.length === 0 && this.state.is_spinner && (
-          <div className="row" style={{marginLeft: "40%"}}>
+          <div className="row" style={{ marginLeft: "40%" }}>
             <Spinner></Spinner>
           </div>
         )}
