@@ -31,7 +31,7 @@ const Spinner = () => {
   const fillStyle = {
     width: `${progress}%`,
     height: "100%",
-    backgroundColor: "#3F7D20",
+    backgroundColor: "#F7D002",
     position: "absolute",
     top: 0,
     left: 0,
