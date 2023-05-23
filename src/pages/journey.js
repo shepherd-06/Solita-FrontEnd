@@ -1,6 +1,7 @@
 import React from "react";
 import SingleJourneyEntry from "../util/journey_item";
 import "../css/App.css";
+import Spinner from "../util/spinner";
 
 class JourneyView extends React.Component {
   constructor(props) {
@@ -36,6 +37,7 @@ class JourneyView extends React.Component {
             journey: result["data"],
             is_spinner: false,
             is_success: true,
+            is_error: result["data"] === 0,
           });
         },
         // Note: it's important to handle errors here
@@ -43,7 +45,6 @@ class JourneyView extends React.Component {
         // exceptions from actual bugs in components.
         (error) => {
           console.log(error);
-
           this.setState({
             is_spinner: false,
             is_error: true,
@@ -68,8 +69,31 @@ class JourneyView extends React.Component {
     return (
       <div className="main_bg">
         <div className="container">
-          {/* TODO: add a spinner here. for loading. */}
-          {this.state.journey.length === 0 && (
+          {/* spinner */}
+          {this.state.journey.length === 0 && this.state.is_spinner && (
+            <div className="row">
+              <div className="col-md-4"></div>
+              <div className="col-md-4">
+                <div
+                  className="row"
+                  style={{
+                    position: "relative",
+                    marginTop: "20%",
+                    paddingLeft: "20%",
+                  }}
+                >
+                  <div className="vertical-center">
+                    <Spinner />
+                    <p className="h3">Loading...</p>
+                  </div>
+                </div>
+              </div>
+              <div className="col-md-4"> </div>
+            </div>
+          )}
+
+          {/* error or no data */}
+          {this.state.is_error && (
             <div className="info">
               <h1 className="display">We are sorry!</h1>
               <h3 className="h3">
@@ -79,7 +103,7 @@ class JourneyView extends React.Component {
             </div>
           )}
 
-          {this.state.journey.length !== 0 && (
+          {this.state.journey.length !== 0 && this.state.is_success && (
             <div className="journey_view">
               <table className="table">
                 <thead>
@@ -132,8 +156,7 @@ class JourneyView extends React.Component {
                         <button
                           type="button"
                           className="btn btn-dark page_btn"
-                          onClick={this.load_next_page.bind(this)
-                        }
+                          onClick={this.load_next_page.bind(this)}
                         >
                           Next
                         </button>
