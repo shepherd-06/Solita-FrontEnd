@@ -1,6 +1,7 @@
 import React from "react";
 import SingleStationItem from "../util/station_item";
 import "../css/App.css";
+import Spinner from "../util/spinner";
 
 class StationListView extends React.Component {
   constructor(props) {
@@ -8,6 +9,10 @@ class StationListView extends React.Component {
     this.state = {
       station: [],
       page: null,
+
+      is_spinner: true,
+      is_success: false,
+      is_error: false,
     };
   }
 
@@ -25,13 +30,18 @@ class StationListView extends React.Component {
           this.setState({
             page: result["page"],
             station: result["data"],
+            is_spinner: false,
+            is_success: true,
+            is_error: false,
           });
         },
-        // Note: it's important to handle errors here
-        // instead of a catch() block so that we don't swallow
-        // exceptions from actual bugs in components.
         (error) => {
           console.log(error);
+          this.setState({
+            is_spinner: false,
+            is_success: false,
+            is_error: true,
+          });
         }
       );
   }
@@ -51,7 +61,13 @@ class StationListView extends React.Component {
   render() {
     return (
       <div className="container">
-        {this.state.station.length === 0 && (
+        {this.state.station.length === 0 && this.state.is_spinner && (
+          <div className="row" style={{marginLeft: "40%"}}>
+            <Spinner></Spinner>
+          </div>
+        )}
+
+        {this.state.is_error && (
           <div className="info">
             <h1 className="display">Sorry!</h1>
             <h3 className="h3">
@@ -61,7 +77,7 @@ class StationListView extends React.Component {
           </div>
         )}
 
-        {this.state.station.length !== 0 && (
+        {this.state.station.length !== 0 && this.state.is_success && (
           <div style={{ backgroundColor: "aliceblue", borderRadius: "15px" }}>
             <table className="table">
               <thead style={{ fontSize: "larger" }}>
