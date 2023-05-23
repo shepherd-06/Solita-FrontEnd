@@ -67,7 +67,7 @@ class JourneyView extends React.Component {
 
   render() {
     return (
-      <div className="main_bg">
+      <div className="">
         <div className="container">
           {/* spinner */}
           {this.state.journey.length === 0 && this.state.is_spinner && (
