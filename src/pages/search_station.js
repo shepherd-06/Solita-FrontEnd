@@ -1,11 +1,10 @@
 import React from "react";
-import SingleStationItem from "../util/station_item";
 import "../css/App.css";
+import SingleStationItem from "../util/station_item";
 import Spinner from "../util/spinner";
 import InfinitySpinner from "../util/infinity_spinner";
-import SearchStationView from "./search_station";
 
-class StationListView extends React.Component {
+class SearchStationView extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -16,174 +15,98 @@ class StationListView extends React.Component {
       is_success: false,
       is_error: false,
       is_btn_spinner: false,
-
-      search_field: null,
-      search_in_focus: false, // to determine if search in focus or not.
     };
   }
 
-
-  getAllStation(page_number = 1) {
-    /**
-     * main func.
-     * it runs the api scheduler.
-     */
+  searchStationAPI(page_number = 1) {
+    //
+    // welp this is where the search happens.
+    const searchField = this.props.search;
     let base_url = process.env.REACT_APP_BASE_URL;
-    let url = base_url + "/get_station/?page=" + page_number;
-    fetch(url)
+    let searchUrl =
+      base_url +
+      "/search_station/?page=" +
+      page_number +
+      "&station=" +
+      searchField;
+
+    fetch(searchUrl)
       .then((res) => res.json())
       .then(
-        (result) => {
-          const stationPage = result["page"];
-          const stationData = result["data"];
-
-          localStorage.setItem("station", JSON.stringify(stationData));
-          localStorage.setItem(
-            "stationPage",
-            JSON.stringify({
-              page: stationPage,
-            })
-          );
-          localStorage.setItem(
-            "stationTime",
-            JSON.stringify({
-              setTime: new Date(),
-            })
-          );
+        (response) => {
+          console.log(response);
+          const searchPage = response["page"];
+          const searchData = response["data"];
 
           this.setState({
-            page: stationPage,
-            station: stationData,
+            page: searchPage,
+            station: searchData,
+
             is_spinner: false,
-            is_success: true,
-            is_error: false,
             is_btn_spinner: false,
-            search_in_focus: false,
+            is_error: false,
+            is_success: true,
           });
         },
         (error) => {
           console.log(error);
           this.setState({
             is_spinner: false,
-            is_success: false,
+            is_btn_spinner: false,
             is_error: true,
-            search_in_focus: false,
+            is_success: false,
           });
         }
       );
   }
 
-  loadLocalStorage() {
-    const storedStationData = localStorage.getItem("station");
-    const storedStationPage = localStorage.getItem("stationPage");
-    const parsedStationPage = JSON.parse(storedStationPage)["page"];
-
-    this.setState({
-      page: parsedStationPage,
-      station: JSON.parse(storedStationData),
-      is_spinner: false,
-      is_success: true,
-      is_error: false,
-    });
-  }
-
-  componentDidMount() {
-    const stationTime = localStorage.getItem("stationTime");
-
-    if (stationTime === null) {
-      // fetch new data.
-      this.getAllStation();
-    } else {
-      // show old data.
-      this.loadLocalStorage();
-    }
-  }
-
+  
   loadPreviousPage() {
     this.setState({
       is_btn_spinner: true,
     });
-    this.getAllStation(this.state.page.current - 1);
+    this.searchStationAPI(this.state.page.current - 1);
   }
 
   loadNextPage() {
     this.setState({
       is_btn_spinner: true,
     });
-    this.getAllStation(this.state.page.current + 1);
+    this.searchStationAPI(this.state.page.current + 1);
   }
 
-  handleSearchFieldChange(event) {
-    // this function handle the search field.
-    // this function will send an automated search request for every change of letters.
-    this.setState({ search_field: event.target.value });
-    
-    if (event.target.value.length >= 3) {
-      this.setState({
-        search_in_focus: true,
-      });
-    } else {
-      this.setState({
-        search_in_focus: false,
-      });
-    }
-  }
-
-  handleSearchClick(event) {
-    event.preventDefault();
-    if (
-      this.state.search_field !== null &&
-      this.state.search_field.length >= 3
-    ) {
-      this.setState({
-        search_in_focus: true,
-      });
-    } else {
-      this.setState({
-        search_in_focus: false,
-      });
-    }
+  componentDidMount() {
+    this.searchStationAPI();
   }
 
   render() {
+    const searchField = this.props.search;
     return (
       <div className="container">
-        {/* Search Station by name*/}
-        <form className="form-inline">
-          <div className="row" style={{ paddingBottom: "15px" }}>
-            <div className="col-md-10">
-              <input
-                className="form-control mr-sm-2"
-                type="search"
-                placeholder="Search by station name"
-                aria-label="Search"
-                style={{ borderRadius: "12px" }}
-                onChange={this.handleSearchFieldChange.bind(this)}
-              />
-            </div>
-            <div className="col-md-2">
-              <button
-                className="btn page_btn my-2 my-sm-0"
-                type="submit"
-                style={{ width: "100%", borderRadius: "12px" }}
-                onClick={this.handleSearchClick.bind(this)}
-              >
-                Search
-              </button>
-            </div>
+        {/* Title start */}
+        <div
+          className="row"
+          style={{
+            marginBottom: "15px",
+          }}
+        >
+          <div
+            className="col-lg-12"
+            align="center"
+            style={{
+              background: "#fff",
+              paddingTop: "5px",
+              borderRadius: "13px",
+            }}
+          >
+            <p className="h6">Showing search result: {searchField}</p>
           </div>
-        </form>
+        </div>
 
-        {/* search result view view */}
-        {this.state.search_in_focus && (
-          <SearchStationView
-            search={this.state.search_field}
-          ></SearchStationView>
-        )}
-
+        {/* title ends */}
         {/* normal station spinner */}
         {this.state.station.length === 0 && this.state.is_spinner && (
-          <div className="row" style={{ marginLeft: "40%" }}>
+          <div className="row" style={{ marginLeft: "45%", marginTop: "30px" }}>
             <Spinner></Spinner>
           </div>
         )}
@@ -199,10 +122,9 @@ class StationListView extends React.Component {
           </div>
         )}
 
-        {/* normal station list view */}
+        {/* search result view here */}
         {this.state.station.length !== 0 &&
-          this.state.is_success &&
-          !this.state.search_in_focus && (
+          this.state.is_success && (
             <div style={{ backgroundColor: "aliceblue", borderRadius: "15px" }}>
               <table className="table">
                 <thead style={{ fontSize: "larger" }}>
@@ -227,7 +149,8 @@ class StationListView extends React.Component {
                   })}
                 </tbody>
               </table>
-              
+
+              {/* add pagination here */}
               <div className="d-flex justify-content-center">
                 <div className="col-lg-3">{/* empty */}</div>
                 <div className="col-lg-6">
@@ -276,4 +199,4 @@ class StationListView extends React.Component {
   }
 }
 
-export default StationListView;
+export default SearchStationView;
