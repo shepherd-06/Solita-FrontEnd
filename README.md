@@ -1,4 +1,4 @@
-# Helsinki City Bike App (FrontEnd)
+# City Bike App (FrontEnd)
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL).
 
