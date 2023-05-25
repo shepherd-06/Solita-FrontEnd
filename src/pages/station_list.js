@@ -15,7 +15,32 @@ class StationListView extends React.Component {
       is_success: false,
       is_error: false,
       is_btn_spinner: false,
+
+      search_field: null,
+      search_page: null,
+      search_in_focus: false, // to determine if search in focus or not.
     };
+  }
+
+  searchStation(page_number = 1, search_field) {
+    // welp this is where the search happens.
+    let base_url = process.env.REACT_APP_BASE_URL;
+    let searchUrl =
+      base_url +
+      "/search_station/?page=" +
+      page_number +
+      "&station=" +
+      search_field;
+    fetch(searchUrl)
+      .then((res) => res.json())
+      .then(
+        (response) => {
+          console.log(response);
+        },
+        (error) => {
+          console.log(error);
+        }
+      );
   }
 
   getAllStation(page_number = 1) {
@@ -68,15 +93,15 @@ class StationListView extends React.Component {
 
   componentDidMount() {
     const stationTime = localStorage.getItem("stationTime");
-    let timeDifferenceInMinutes = 0;
+    // let timeDifferenceInMinutes = 0;
 
-    if (stationTime !== null) {
-      const storedTimestamp = new Date(stationTime).getTime();
-      const currentTime = new Date().getTime();
-      timeDifferenceInMinutes = Math.floor(
-        (currentTime - storedTimestamp) / (1000 * 60)
-      );
-    }
+    // if (stationTime !== null) {
+    //   const storedTimestamp = new Date(stationTime).getTime();
+    //   const currentTime = new Date().getTime();
+    //   timeDifferenceInMinutes = Math.floor(
+    //     (currentTime - storedTimestamp) / (1000 * 60)
+    //   );
+    // }
 
     if (stationTime === null) {
       // fetch new data.
@@ -97,23 +122,68 @@ class StationListView extends React.Component {
     }
   }
 
-  load_previous_page() {
+  loadPreviousPage() {
     this.setState({
       is_btn_spinner: true,
     });
     this.getAllStation(this.state.page.current - 1);
   }
 
-  load_next_page() {
+  loadNextPage() {
     this.setState({
       is_btn_spinner: true,
     });
     this.getAllStation(this.state.page.current + 1);
   }
 
+  handleSearchFieldChange(event) {
+    // this function handle the search field.
+    // this function will send an automated search request for every change of letters.
+    this.setState({ search_field: event.target.value });
+    if (event.target.value.length >= 3) {
+      this.searchStation(1, event.target.value);
+    }
+  }
+
+  handleSearchClick(event) {
+    event.preventDefault();
+    if (
+      this.state.search_field !== null &&
+      this.state.search_field.length >= 3
+    ) {
+      this.searchStation(1, this.state.search_field);
+    }
+  }
+
   render() {
     return (
       <div className="container">
+        {/* Search Station by name*/}
+        <form className="form-inline">
+          <div className="row" style={{ paddingBottom: "15px" }}>
+            <div className="col-md-10">
+              <input
+                className="form-control mr-sm-2"
+                type="search"
+                placeholder="Search by station name"
+                aria-label="Search"
+                style={{ borderRadius: "12px" }}
+                onChange={this.handleSearchFieldChange.bind(this)}
+              />
+            </div>
+            <div className="col-md-2">
+              <button
+                className="btn page_btn my-2 my-sm-0"
+                type="submit"
+                style={{ width: "100%", borderRadius: "12px" }}
+                onClick={this.handleSearchClick.bind(this)}
+              >
+                Search
+              </button>
+            </div>
+          </div>
+        </form>
+
         {this.state.station.length === 0 && this.state.is_spinner && (
           <div className="row" style={{ marginLeft: "40%" }}>
             <Spinner></Spinner>
@@ -166,7 +236,7 @@ class StationListView extends React.Component {
                       <button
                         type="button"
                         className="btn btn-dark page_btn"
-                        onClick={this.load_previous_page.bind(this)}
+                        onClick={this.loadPreviousPage.bind(this)}
                       >
                         Previous
                       </button>
@@ -187,7 +257,7 @@ class StationListView extends React.Component {
                       <button
                         type="button"
                         className="btn btn-dark page_btn"
-                        onClick={this.load_next_page.bind(this)}
+                        onClick={this.loadNextPage.bind(this)}
                       >
                         Next
                       </button>
