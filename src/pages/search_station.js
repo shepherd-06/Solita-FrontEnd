@@ -107,6 +107,12 @@ class SearchStationView extends React.Component {
             }}
           >
             <p className="h6">Showing search result: {searchField}</p>
+
+            {this.state.station.length === 0 && this.state.is_success && (
+              <p className="h6" style={{ padding: "5px", paddingLeft: "10px" }}>
+                No result returned!
+              </p>
+            )}
           </div>
         </div>
 
