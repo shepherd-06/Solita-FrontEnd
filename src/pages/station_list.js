@@ -17,7 +17,7 @@ class StationListView extends React.Component {
       is_error: false,
       is_btn_spinner: false,
 
-      search_field: null,
+      search_field: "",
       search_in_focus: false, // to determine if search in focus or not.
     };
   }
@@ -167,6 +167,7 @@ class StationListView extends React.Component {
                 type="submit"
                 style={{ width: "100%", borderRadius: "12px" }}
                 onClick={this.handleSearchClick.bind(this)}
+                disabled={this.state.search_field.length < 3}
               >
                 Search
               </button>
