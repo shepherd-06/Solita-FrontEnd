@@ -60,7 +60,6 @@ class SearchStationView extends React.Component {
       );
   }
 
-  
   loadPreviousPage() {
     this.setState({
       is_btn_spinner: true,
@@ -77,6 +76,14 @@ class SearchStationView extends React.Component {
 
   componentDidMount() {
     this.searchStationAPI();
+  }
+
+  componentDidUpdate(prevProps) {
+    // Check if the search prop has changed
+    if (prevProps.search !== this.props.search) {
+      // Call the search API with updated searchField value
+      this.searchStationAPI();
+    }
   }
 
   render() {
@@ -123,77 +130,76 @@ class SearchStationView extends React.Component {
         )}
 
         {/* search result view here */}
-        {this.state.station.length !== 0 &&
-          this.state.is_success && (
-            <div style={{ backgroundColor: "aliceblue", borderRadius: "15px" }}>
-              <table className="table">
-                <thead style={{ fontSize: "larger" }}>
-                  <tr>
-                    <th scope="col">ID</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Address</th>
-                    <th scope="col">City</th>
-                    <th scope="col">Operator</th>
-                    <th scope="col">Capacity</th>
-                  </tr>
-                </thead>
+        {this.state.station.length !== 0 && this.state.is_success && (
+          <div style={{ backgroundColor: "aliceblue", borderRadius: "15px" }}>
+            <table className="table">
+              <thead style={{ fontSize: "larger" }}>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">Name</th>
+                  <th scope="col">Address</th>
+                  <th scope="col">City</th>
+                  <th scope="col">Operator</th>
+                  <th scope="col">Capacity</th>
+                </tr>
+              </thead>
 
-                <tbody>
-                  {this.state.station.map((value, index) => {
-                    return (
-                      <SingleStationItem
-                        entry={value}
-                        key={index}
-                      ></SingleStationItem>
-                    );
-                  })}
-                </tbody>
-              </table>
+              <tbody>
+                {this.state.station.map((value, index) => {
+                  return (
+                    <SingleStationItem
+                      entry={value}
+                      key={index}
+                    ></SingleStationItem>
+                  );
+                })}
+              </tbody>
+            </table>
 
-              {/* add pagination here */}
-              <div className="d-flex justify-content-center">
-                <div className="col-lg-3">{/* empty */}</div>
-                <div className="col-lg-6">
-                  {/* middle - pagination */}
-                  <div className="row">
-                    <div className="col-sm-2">
-                      {this.state.page.has_previous && (
-                        <button
-                          type="button"
-                          className="btn btn-dark page_btn"
-                          onClick={this.loadPreviousPage.bind(this)}
-                        >
-                          Previous
-                        </button>
+            {/* add pagination here */}
+            <div className="d-flex justify-content-center">
+              <div className="col-lg-3">{/* empty */}</div>
+              <div className="col-lg-6">
+                {/* middle - pagination */}
+                <div className="row">
+                  <div className="col-sm-2">
+                    {this.state.page.has_previous && (
+                      <button
+                        type="button"
+                        className="btn btn-dark page_btn"
+                        onClick={this.loadPreviousPage.bind(this)}
+                      >
+                        Previous
+                      </button>
+                    )}
+                  </div>
+                  <div className="col-lg-8">
+                    <blockquote className="blockquote text-center">
+                      {this.state.is_btn_spinner && (
+                        <div align="center">
+                          <InfinitySpinner />
+                        </div>
                       )}
-                    </div>
-                    <div className="col-lg-8">
-                      <blockquote className="blockquote text-center">
-                        {this.state.is_btn_spinner && (
-                          <div align="center">
-                            <InfinitySpinner />
-                          </div>
-                        )}
-                        <p className="mb-0">Page: {this.state.page.current}</p>
-                      </blockquote>
-                    </div>
-                    <div className="col-sm-2">
-                      {this.state.page.has_next && (
-                        <button
-                          type="button"
-                          className="btn btn-dark page_btn"
-                          onClick={this.loadNextPage.bind(this)}
-                        >
-                          Next
-                        </button>
-                      )}
-                    </div>
+                      <p className="mb-0">Page: {this.state.page.current}</p>
+                    </blockquote>
+                  </div>
+                  <div className="col-sm-2">
+                    {this.state.page.has_next && (
+                      <button
+                        type="button"
+                        className="btn btn-dark page_btn"
+                        onClick={this.loadNextPage.bind(this)}
+                      >
+                        Next
+                      </button>
+                    )}
                   </div>
                 </div>
-                <div className="col-lg-3">{/* empty -  */}</div>
               </div>
+              <div className="col-lg-3">{/* empty -  */}</div>
             </div>
-          )}
+          </div>
+        )}
       </div>
     );
   }
