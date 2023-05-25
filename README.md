@@ -2,7 +2,7 @@
 
 This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL).
 
-Backend (Deployed): ~~<https://test.ibtehaz.xyz/ops/>~~ [Cloud Server has been taken into offline]
+Backend (Deployed): https://projects.ibtehaz.xyz/solita/
 
 Frontend (Deployed): <https://shepherd-06.github.io/Solita-FrontEnd/>
 
@@ -71,7 +71,7 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 
 * [Completed] List all the stations
 * [Completed] Pagination
-* [TODO] Searching
+* [Completed] Searching
 
 ### Single station view
 
