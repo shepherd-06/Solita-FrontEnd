@@ -128,17 +128,10 @@ class JourneyView extends React.Component {
           <div className="row">
             <div className="col-md-4"></div>
             <div className="col-md-4">
-              <div
-                className="row"
-                style={{
-                  position: "relative",
-                  marginTop: "20%",
-                  paddingLeft: "20%",
-                }}
-              >
-                <div className="vertical-center">
+              <div className="row" text-align="center">
+                <div align="center" style={{ paddingTop: "20px"}}>
                   <Spinner />
-                  <p className="h3">Loading...</p>
+                  <p className="h4" align="center" style={{ paddingTop: "25px"}}>Loading...</p>
                 </div>
               </div>
             </div>

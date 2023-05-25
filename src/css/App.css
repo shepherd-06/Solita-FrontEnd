@@ -48,12 +48,12 @@
 }
 
 .page_btn {
-  background-color: #1C7AD9;
+  background-color: #1c7ad9;
   color: #faf0cc;
 }
 
 .page_btn:hover {
-  background-color: #3F7D20;
+  background-color: #3f7d20;
   color: #faf0cc;
   transition: 0.5s;
 }
@@ -78,7 +78,7 @@
 
 .nav_item_focus {
   font-size: 1em;
-  color: #3C91E6;
+  color: #3c91e6;
 }
 
 .main_bg {
@@ -149,15 +149,80 @@
   transform: translateY(-50%);
 }
 
-p,h3, h4, h5, h6 {
-  color: #2E2E3A;
+p,
+h3,
+h4,
+h5,
+h6 {
+  color: #2e2e3a;
 }
 
 h1 {
   color: #121217;
 }
 
-.nav-item, .navbar-brand{
+.nav-item,
+.navbar-brand {
   font-size: large;
   font-weight: 500;
+}
+
+.spinner-loader {
+  width: 80px;
+  height: 80px;
+  color: #1c7ad9;
+  position: relative;
+  background: radial-gradient(10px, currentColor 94%, #0000);
+}
+
+.spinner-loader:before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: radial-gradient(9px at bottom right, #0000 94%, currentColor) top
+      left,
+    radial-gradient(9px at bottom left, #0000 94%, currentColor) top right,
+    radial-gradient(9px at top right, #0000 94%, currentColor) bottom left,
+    radial-gradient(9px at top left, #0000 94%, currentColor) bottom right;
+  background-size: 40px 40px;
+  background-repeat: no-repeat;
+  animation: sp8 3s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+@keyframes sp8 {
+  33% {
+    inset: -20px;
+    transform: rotate(0deg);
+  }
+  66% {
+    inset: -20px;
+    transform: rotate(90deg);
+  }
+  100% {
+    inset: 0;
+    transform: rotate(90deg);
+  }
+}
+
+.infinity-loader {
+  width: 20px;
+  height: 20px;
+  border-radius: 10%;
+  background: #1c7ad9;
+  clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  animation: infinityLoader 2s infinite cubic-bezier(0.3, 1, 0, 1);
+}
+
+@keyframes infinityLoader {
+  33% {
+    border-radius: 0;
+    background: #e4e4ed;
+    clip-path: polygon(0 0, 100% 0, 100% 100%, 0 100%);
+  }
+  66% {
+    border-radius: 0;
+    background: #1c7ad9;
+    clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
+  }
 }
