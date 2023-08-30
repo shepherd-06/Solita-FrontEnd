@@ -1,22 +1,24 @@
-# City Bike App (FrontEnd)
+# City Bike App (FrontEnd) 🚴‍♂️
 
-This is the pre-assignment for Solita Dev Academy Finland 2023. This project uses dataset from Helsinki Region Transport (HSL).
+Welcome to the City Bike App! This project is the pre-assignment for Solita Dev Academy Finland 2023 and leverages the Helsinki Region Transport (HSL) dataset to provide you with a seamless bike-sharing experience.
 
-Backend (Deployed): https://projects.ibtehaz.xyz/solita/
+👉 Backend: Deployed ✅
 
-Frontend (Deployed): <https://shepherd-06.github.io/Solita-FrontEnd/>
+👉 Frontend: [Check the webapp here](https://shepherd-06.github.io/Solita-FrontEnd/)
 
-Backend (Github Repo): <https://github.com/shepherd-06/Solita-Backend>
+👉 Backend (GitHub Repo): [BackEnd](https://github.com/shepherd-06/Solita-Backend)
 
-Full feature list of the web-app is given [here](https://github.com/shepherd-06/Solita-FrontEnd#feature-list).
+👉 Full feature list of the web-app is given [here](https://github.com/shepherd-06/Solita-FrontEnd#feature-list).
 
-Screenshots of the full website: [here](https://github.com/shepherd-06/Solita-FrontEnd#screenshots),
+👉 Some Screenshots: [here](https://github.com/shepherd-06/Solita-FrontEnd#screenshots),
 
-## Requirements
+## Requirements 🛠️
 
-This project has been built on MacOS. It's published on a free `netlify.app` website. This server comes along with a `.env` file. Which contains the backend servers URL only. If you want to change the backend server URL, you can change it there.
+~~This project has been built on MacOS. It's published on a free `netlify.app` website. This server comes along with a `.env` file. Which contains the backend servers URL only. If you want to change the backend server URL, you can change it there.~~
 
-## Installation and Setup Instructions
+This project uses Github pages to deploy!
+
+## Installation and Setup Instructions 🚀
 
 Clone down this repository. You will need node and npm installed globally on your machine.
 
@@ -46,55 +48,56 @@ The app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-## Feature List
+### To Deploy on GitHub Pages
+
+`npm run deploy` to deploy the app in the github pages.
+
+## Feature List ✨
 
 ### Data Import
 
-* [Completed] Import data from the CSV files to a database or in-memory storage.
-
-* [Completed] Validate data before importing.
-
-* [Completed] Don't import journeys that lasted for less than ten seconds
-
-* [Completed] Don't import journeys that covered distances shorter than 10 meters
+* ✅ Import data from the CSV files to a database or in-memory storage.
+* ✅ Validate data before importing.
+* ✅ Don't import journeys that lasted for less than ten seconds.
+* ✅ Don't import journeys that covered distances shorter than 10 meters.
 
 ### Journey List View
 
-* [Completed] List Journeys
-* [Completed] For each journey show departure and return stations, covered distance in kilometers and duration in minutes
-* [Completed] Pagination
-* [TODO] Ordering per column
-* [TODO] Searching
-* [TODO] Filtering
+* ✅ List Journeys.
+* ✅ For each journey show departure and return stations, covered distance in kilometers and duration in minutes.
+* ✅ Pagination.
+* ⌛❌ Ordering per column.
+* ⌛❌ Searching.
+* ⌛❌ Filtering.
 
 ### Station list
 
-* [Completed] List all the stations
-* [Completed] Pagination
-* [Completed] Searching
+* ✅ List all the stations.
+* ✅ Pagination.
+* ✅ Searching.
 
 ### Single station view
 
-* [Completed] Station name
-* [Completed] Station address
-* [Completed] Total number of journeys starting from the station
-* [Completed] Total number of journeys ending at the station
-* [Completed] Station location on the map
-* [Completed] The average distance of a journey starting from the station
-* [Completed] The average distance of a journey ending at the station
-* [Completed] Top 5 most popular return stations for journeys starting from the station
-* [Completed] Top 5 most popular departure stations for journeys ending at the station
-* [TODO] Ability to filter all the calculations per month
+* ✅ Station name.
+* ✅ Station address.
+* ✅ Total number of journeys starting from the station.
+* ✅ Total number of journeys ending at the station.
+* ✅ Station location on the map.
+* ✅ The average distance of a journey starting from the station.
+* ✅ The average distance of a journey ending at the station.
+* ✅ Top 5 most popular return stations for journeys starting from the station.
+* ✅ Top 5 most popular departure stations for journeys ending at the station.
+* ⌛❌ Ability to filter all the calculations per month.
 
 ### Additional Features
 
-* [TODO] Endpoints to store new journeys data or new bicycle stations
-* [TODO] Running backend in Docker
-* [Completed] Running backend in Cloud
-* [TODO] Implement E2E tests
-* [TODO] Create UI for adding journeys or bicycle stations
+* ⌛❌ Endpoints to store new journeys data or new bicycle stations.
+* ⌛❌ Running backend in Docker.
+* ✅ Running backend in Cloud.
+* ⌛❌ Implement E2E tests.
+* ⌛❌ Create UI for adding journeys or bicycle stations.
 
-## Screenshots
+## Screenshots 📸
 
 ### Home Page (List of Journeys)
 
@@ -109,4 +112,4 @@ See the section about [deployment](https://facebook.github.io/create-react-app/d
 ![stationview](https://github.com/shepherd-06/Solita-FrontEnd/blob/dev/screenshots/Screenshot%202023-02-10%20at%2012.23.54.png?raw=true)
 
 -----------
-Hyva! Happy hacking!
+Hyva! Happy hacking! 🚀

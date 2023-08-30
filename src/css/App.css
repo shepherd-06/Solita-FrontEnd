@@ -226,3 +226,23 @@ h1 {
     clip-path: polygon(50% 0, 50% 0, 100% 100%, 0 100%);
   }
 }
+
+.btn_github {
+  background-color: whitesmoke;
+  color: #121217;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.btn_github:hover {
+  background-color: #f0f3bd;
+  color: #1a5e63;
+  font-weight: bold;
+  border-radius: 10px;
+}
+
+.btn_github:visited {
+  color: #121217;
+}
