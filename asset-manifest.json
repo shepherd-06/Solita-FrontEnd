@@ -1,16 +1,16 @@
 {
   "files": {
-    "main.css": "/Solita-FrontEnd/static/css/main.4c573879.css",
-    "main.js": "/Solita-FrontEnd/static/js/main.ff12f1cc.js",
+    "main.css": "/Solita-FrontEnd/static/css/main.9bced27c.css",
+    "main.js": "/Solita-FrontEnd/static/js/main.9b69b806.js",
     "static/js/787.cda612ba.chunk.js": "/Solita-FrontEnd/static/js/787.cda612ba.chunk.js",
     "static/media/404_not_found.jpeg": "/Solita-FrontEnd/static/media/404_not_found.8c602802b8e1106af9f4.jpeg",
     "index.html": "/Solita-FrontEnd/index.html",
-    "main.4c573879.css.map": "/Solita-FrontEnd/static/css/main.4c573879.css.map",
-    "main.ff12f1cc.js.map": "/Solita-FrontEnd/static/js/main.ff12f1cc.js.map",
+    "main.9bced27c.css.map": "/Solita-FrontEnd/static/css/main.9bced27c.css.map",
+    "main.9b69b806.js.map": "/Solita-FrontEnd/static/js/main.9b69b806.js.map",
     "787.cda612ba.chunk.js.map": "/Solita-FrontEnd/static/js/787.cda612ba.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.4c573879.css",
-    "static/js/main.ff12f1cc.js"
+    "static/css/main.9bced27c.css",
+    "static/js/main.9b69b806.js"
   ]
 }
